@@ -17,7 +17,7 @@ DBSCANのクラスタリングの様子を、パラメータep, min_samplesの�
 
 ### 🏁 結果と考察
 1. ベースライン
-![ep：適度に小さい](./images/plot_baseline.png)
+![ep：ベースライン](./images/plot_baseline.png)
 
 1. ep: 小  
 密度を小さく見ることなので、意味のないクラスタが増える  
@@ -36,5 +36,18 @@ DBSCANのクラスタリングの様子を、パラメータep, min_samplesの�
 
 ![num_samples：大](./images/plot_min_samples_big.png)
 
-### 🔬 考察  
-epとmin_samplesは、小さめにしないと異常検知には使用出来ない
+### 🖊️ 考察  
+epとmin_samplesは、小さめにしないと異常検知には使用出来ない  
+
+### 🔬 実験  
+#### パラメータ構成として、k-distanceグラフでepsを決める  
+下記グラフを見るとエルボーは0.17くらい⇒ 0.17より大きいとノイズ(外れ値)との距離が急激に広がる
+
+![k-distance](./images/k-distance.png)
+
+##### eps=0.3の場合  
+![ep：ベースライン](./images/plot_baseline.png)
+
+##### eps=0.17の場合  
+上記より適切にクラスタリングされている  
+![ep：エルボーの値](./images/optimized_eps.png)
