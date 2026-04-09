@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.cluster import DBSCAN
+from sklearn.preprocessing import StandardScaler
 import plotly.express as px
 
 #=========================================
@@ -18,7 +19,7 @@ noise = np.random.uniform(low=-1, high=7, size=(30, 2))
 
 # Concat
 X = np.vstack([cluster1, cluster2, cluster2, noise])
-print(X)
+X = StandardScaler().fit_transform(X)
 
 # DataFrame
 df = pd.DataFrame(X, columns=["x", "y"])
@@ -28,7 +29,7 @@ df = pd.DataFrame(X, columns=["x", "y"])
 # 2. DBSCAN Clustering
 #=========================================
 dbscan = DBSCAN(
-    eps=0.6,  # 距離閾値
+    eps=0.3,  # 距離閾値
     min_samples=2,  # クラスタ形成最小サンプル数
 )
 
