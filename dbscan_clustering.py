@@ -3,6 +3,8 @@ import pandas as pd
 from sklearn.cluster import DBSCAN
 from sklearn.preprocessing import StandardScaler
 import plotly.express as px
+import plotly.io as pio
+pio.renderers.default = "browser"  # ブラウザでグラフは表示する
 
 #=========================================
 # 1. ダミーデータ
@@ -29,8 +31,9 @@ df = pd.DataFrame(X, columns=["x", "y"])
 # 2. DBSCAN Clustering
 #=========================================
 dbscan = DBSCAN(
-    eps=0.3,  # 距離閾値
-    min_samples=2,  # クラスタ形成最小サンプル数
+    # eps=0.3,  # 距離閾値
+    eps=0.17,
+    min_samples=4,  # クラスタ形成最小サンプル数
 )
 
 labels = dbscan.fit_predict(df[["x", "y"]])
@@ -53,3 +56,19 @@ fig = px.scatter(
 )
 
 fig.show()
+
+#=========================================
+# 4. k-distance
+#=========================================
+from sklearn.neighbors import NearestNeighbors
+import plotly.graph_objects as go
+
+neighbors = NearestNeighbors(n_neighbors=4)
+neighbors_fit = neighbors.fit(X)
+distances, indicies = neighbors_fit.kneighbors(X)
+
+distances = np.sort(distances[:,3])
+
+fig2 = go.Figure()
+fig2.add_trace(go.Scatter(y=distances, mode='lines'))
+fig2.show()
