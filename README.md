@@ -15,7 +15,7 @@ DBSCANのクラスタリングの様子を、パラメータep, min_samplesの�
 
 --- 
 
-### 🏁 結果と考察
+### 🏁 結果
 1. ベースライン
 ![ep：ベースライン](./images/plot_baseline.png)
 
