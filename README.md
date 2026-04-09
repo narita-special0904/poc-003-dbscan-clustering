@@ -15,7 +15,7 @@ DBSCANのクラスタリングの様子を、パラメータep, min_samplesの�
 
 --- 
 
-### 🔬 結果と考察
+### 🏁 結果と考察
 1. ベースライン
 ![ep：適度に小さい](./images/plot_baseline.png)
 
@@ -35,3 +35,6 @@ DBSCANのクラスタリングの様子を、パラメータep, min_samplesの�
 クラスタ形成最小数パラメータなので、ベースラインより大きくしても特に変化なし  
 
 ![num_samples：大](./images/plot_min_samples_big.png)
+
+### 🔬 考察  
+epとmin_samplesは、小さめにしないと異常検知には使用出来ない
